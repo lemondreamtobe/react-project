@@ -43,6 +43,7 @@ ol, ul {
 .square a{
   display: inline-block;
   vertical-align: middle;
+  transition: all 0.5s;
 }
 .square:focus {
   outline: none;
@@ -76,4 +77,17 @@ ol, ul {
   height: 55px;
   background: #fff;
   border-radius: 50%;
+}
+.currentAct{
+  color: red;
+  font-weight: bold;
+}
+.operate{
+  text-align: center;
+}
+.operate * {
+  margin: 0 20px;
+}
+.win{
+  background: red;
 }
