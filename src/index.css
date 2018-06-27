@@ -18,7 +18,7 @@ ol, ul {
 }
 
 .square {
-  background: #fff;
+  background:lightcoral;
   border: 1px solid #999;
   float: left;
   font-size: 40px;
@@ -29,9 +29,15 @@ ol, ul {
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 30%;
+  width: 33.3333333%;
 }
-
+.square{
+  text-align: center;
+}
+.square a{
+  display: inline-block;
+  vertical-align: middle;
+}
 .square:focus {
   outline: none;
 }
@@ -47,4 +53,19 @@ ol, ul {
 
 .game-info {
   margin-left: 20px;
+}
+.game-title{
+  text-align: center;
+}
+.cha{
+  width: 55px;
+  height: 55px;
+  background: black;
+  border-radius: 50%;
+}
+.yuan{
+  width: 55px;
+  height: 55px;
+  background: #fff;
+  border-radius: 50%;
 }

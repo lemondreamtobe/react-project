@@ -19,7 +19,7 @@ import './index.css';
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
-      {props.value}
+      <a href="#" className={props.value}></a>
     </button>
   );
 }
@@ -62,37 +62,58 @@ function Square(props) {
         history: [{
           squares: Array(9).fill(null),
         }],
+        stepNumber: 0,
         xIsNext: true,
       };
     }
     handleClick(i) {
-      const history = this.state.history;
+      const history = this.state.history.slice(0, this.state.stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
       if (calculateWinner(squares) || squares[i]) {
         return;
       }
-      squares[i] = this.state.xIsNext ? 'X' : 'O';
+      squares[i] = this.state.xIsNext ? 'cha' : 'yuan';
       this.setState({
         history: history.concat([{
           squares: squares
         }]),
+        stepNumber: history.length,
         xIsNext: !this.state.xIsNext,
+      });
+    }
+    jumpTo(step) {
+      this.setState({
+        stepNumber: step,
+        xIsNext: (step % 2) ? false : true,
       });
     }
     render() {
       const history = this.state.history;
-      const current = history[history.length - 1];
+      const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
-  
+      const moves = history.map((step, move) => {
+        const desc = move ?
+          'Move #' + move :
+          'Game start';
+        return (
+          <li key={move}>
+            <label href="#" onClick={() => this.jumpTo(move)}>{desc}</label>
+          </li>
+        );
+      });
       let status;
       if (winner) {
-        status = 'Winner: ' + winner;
+        status = 'Winner: ' + (winner === 'cha' ? '黑棋' : '白棋');
+        setTimeout(() => {
+          alert('胜利者 -> '+ (winner === 'cha' ? '黑棋' : '白棋'));
+        }, 100)
       } else {
-        status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        status = 'Next player: ' + (this.state.xIsNext ? '黑棋' : '白棋');
       }
       return (
         <div className="game">
+          <h1 className="game-title">三子棋游戏，邀请你的小伙伴一起来玩吧~</h1>
           <div className="game-board">
             <Board
               squares={current.squares}
@@ -101,7 +122,7 @@ function Square(props) {
           </div>
           <div className="game-info">
             <div>{status}</div>
-            <ol>{/* TODO */}</ol>
+            <ol>{moves}</ol>
           </div>
         </div>
       );
