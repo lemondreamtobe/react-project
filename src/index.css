@@ -1,8 +1,13 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  margin: 0px;
 }
-
+html,body,#root{
+  height: 100%;
+}
+h1,h2,h3{
+  margin: 0px;
+}
 ol, ul {
   padding-left: 30px;
 }
@@ -18,8 +23,9 @@ ol, ul {
 }
 
 .square {
-  background:lightcoral;
-  border: 1px solid #999;
+  background: none;
+  /* background:lightcoral; */
+  border: 1px solid black;
   float: left;
   font-size: 40px;
   font-weight: bold;
@@ -43,12 +49,14 @@ ol, ul {
 }
 
 .kbd-navigation .square:focus {
-  background: #ddd;
+  /* background: #ddd; */
 }
 
 .game {
   /* display: flex;
   flex-direction: row; */
+  height: 100%;
+  background: url('./qp.jpg')
 }
 
 .game-info {
