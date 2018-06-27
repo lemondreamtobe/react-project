@@ -1,21 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// class Square extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       value: null,
-//     };
-//   }
-//     render() {
-//       return (
-//         <button className="square" onClick={() => this.props.onClick()}>
-//           {this.props.value}
-//         </button>
-//       );
-//     }
-//   }
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
@@ -84,9 +69,6 @@ function Square(props) {
       };
     }
     handleClick(i) {
-      // const history = [...this.state.history];
-      // const current = history[history.length - 1]; //取最后一位也就是最新的棋谱
-      // const squares = [...current.squares];
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
       const current = history[history.length - 1];
       const squares = [...current.squares];
@@ -136,7 +118,7 @@ function Square(props) {
       const winlines = result ? result.lines : [];
       const moves = history.map((step, move) => {
         const desc = move ?
-          'Move #' + move :
+          'Move 第' + move + '步' :
           'Game start';
         const currentAct = move === this.state.stepNumber ? 'currentAct' : ''; 
         return (
