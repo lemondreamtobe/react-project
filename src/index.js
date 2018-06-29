@@ -186,4 +186,90 @@ function Square(props) {
     }
     return null;
   }
+
+  // ===========================
+  function formatDate(date) {
+    return date.toLocaleDateString();
+  }
   
+  function Avatar(props) {
+    return (
+      <img 
+        className="Avatar"
+        src={props.user.avatarUrl}
+        alt={props.user.name} 
+      />
+    );
+  }
+  function CommentInfo(props) {
+    return (
+      <div>
+        <div className="Comment-text">
+          {props.info.text}
+        </div>
+        <div className="Comment-date">
+          {formatDate(props.info.date)}
+        </div>
+      </div>
+    )
+  }
+  function UserInfo(props) {
+    return (
+      <div className="UserInfo">
+        <Avatar user={props.user} />
+        <div className="UserInfo-name">
+          {props.user.name}
+        </div>
+      </div>
+    );
+  }
+  
+  function Comment(props) {
+    return (
+      <div className="Comment">
+        <UserInfo user={props.author} />
+        <CommentInfo info={props.info}  />
+      </div>
+    );
+  }
+  
+  const comment = {
+    info:{
+      date: new Date(),
+      text: 'I hope you enjoy learning React!',
+     },
+    author: {
+      name: 'Hello Kitty',
+      avatarUrl: 'http://placekitten.com/g/64/64'
+    }
+  };
+  class IllegalButton extends React.Component{
+    constructor(props) {
+      super();
+      this.i = 0;
+    }
+    changeText () {
+      this.props.text = 'a' + this.i;
+      this.i += 1;
+    }
+      render() {
+        return (
+          <div>
+            <button onClick={() => {this.changeText()}}>changeText</button>
+            <div>
+              {this.props.text}
+            </div>
+          </div>
+        )
+      }
+    }
+  ReactDOM.render(
+    <Comment
+      info = {comment.info}
+      author={comment.author} />,
+    document.getElementById('comment')
+  );
+  ReactDOM.render(
+    <IllegalButton text="hello world!!" />,
+    document.getElementById('illegal')
+  );
