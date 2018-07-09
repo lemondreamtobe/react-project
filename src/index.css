@@ -96,3 +96,12 @@ ol, ul {
 .win{
   background: red;
 }
+.shoppingList{
+  border: 1px solid green;
+  padding: 5px;
+}
+.shopping-table-td{
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}
